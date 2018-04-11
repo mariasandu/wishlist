@@ -1,0 +1,125 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'AvenirLight';
+  src: url('assets/fonts/AvenirLTStd-Light.otf') format('opentype');
+}
+
+@import '~@angular/material/theming';
+
+$custom-typography: mat-typography-config($font-family: 'AvenirLight');
+
+// Plus imports for other components in your app.
+// Include the base styles for Angular Material core. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+@include mat-core($custom-typography);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$he-primary: mat-palette($mat-indigo);
+$he-accent: mat-palette($mat-pink, A700, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$he-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$he-theme: mat-light-theme($he-primary, $he-accent, $he-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($he-theme);
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'AvenirLight', sans-serif;
+}
+
+.logo {
+  position: absolute;
+  top: -46px;
+  right: 10px;
+}
+
+@import 'assets/styles/variables';
+
+/*=============================
+=            PAGES            =
+=============================*/
+
+
+/*=====  End of PAGES  ======*/
+
+/*==================================
+=            COMPONENTS            =
+==================================*/
+
+/*=====  End of COMPONENTS  ======*/
+
+/*==============================
+=            DIALOG            =
+==============================*/
+.wd-dialog {
+  min-width: 50%;
+  margin: 10px;
+
+  .mat-dialog-title {
+    margin-bottom: 0;
+  }
+
+  .mat-form-field {
+    display: block;
+  }
+
+  .mat-input-container.mat-focused {
+    .mat-form-field-label {
+      color: $controlsColor;
+      border-color: $controlsColor;
+    }
+
+    .mat-form-field-ripple {
+      background-color: $controlsColor;
+    }
+  }
+
+  .submit-button {
+    &[disabled] {
+      background-color: rgba(57, 191, 89, 0.5);
+    }
+    background-color: $controlsColor;
+    color: #fff;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .wd-dialog {
+    max-width: 100% !important;
+    width: 100%;
+  }
+}
+/*=====  End of DIALOG  ======*/
+
+/*==============================
+=            SELECT            =
+==============================*/
+.wd-select {
+  .mat-option {
+    &.mat-selected:not(.mat-option-disabled) {
+      color: $controlsColor;
+    }
+  }
+}
+
+.mat-form-field {
+  &.mat-focused {
+    .mat-select-arrow {
+      color: rgba(0, 0, 0, 0.54) !important;
+    }
+  }
+}
+/*=====  End of SELECT  ======*/
