@@ -8,8 +8,5 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class AppComponent {
   title = 'app';
-  constructor(private db: AngularFireDatabase) {
-    const observable = this.db.object(`connected`).valueChanges;
 
-  }
 }
