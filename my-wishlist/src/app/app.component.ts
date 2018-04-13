@@ -20,11 +20,17 @@ export class AppComponent {
   needsCol: AngularFirestoreCollection<Need>;
   needs: Observable<Need[]>;
 
+  item:string;
+  donator:string;
 
   constructor(private afs: AngularFirestore) {}
 
   ngOnInit() {
     this.needsCol = this.afs.collection('needs');
     this.needs = this.needsCol.valueChanges();
+  }
+
+  addNeed() {
+    this.afs.collection('needs').add({'item': this.item});
   }
 }
