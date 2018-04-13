@@ -3,13 +3,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
+import { FormsModule } from '@angular/forms';
 
 // Initialize Firebase
-const firebaseConfig = {
+var firebaseConfig = {
   apiKey: "AIzaSyBRUuuOYHR1U3UWztZvlRSe2vEnLL_GBX4",
   authDomain: "my-wishlist-datastore.firebaseapp.com",
   databaseURL: "https://my-wishlist-datastore.firebaseio.com",
@@ -28,7 +30,9 @@ const firebaseConfig = {
     BrowserAnimationsModule,
     MaterialModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFirestoreModule,
+    AngularFireDatabaseModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
