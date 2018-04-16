@@ -15,19 +15,22 @@
           <mat-form-field class="field-full-width">
             <input matInput placeholder="Need" [(ngModel)]="item" name="item">
           </mat-form-field>
+          <mat-form-field class="field-full-width">
+            <input matInput placeholder="Donator" [(ngModel)]="donator" name="donator">
+          </mat-form-field>
           <br>
           <button type="submit" class="btn btn-primary" (click)="addNeed()">Add a New Need</button>
         </form>
       </mat-card>
       <mat-card>
         <mat-list *ngFor="let need of needs | async">
-          <mat-list-item>
-            <h3 mat-line>{{ need.item }}</h3>
-            <p mat-line>
-              <span>{{ need.donator }}</span>
-            </p>
+          <mat-list-item (click)="getNeed(need.id)">
+            <h3 mat-line>{{ need.data.item }}</h3>(<a href="#" (click)="deleteNeed(need.id)">delete</a>)
           </mat-list-item>
         </mat-list>
+        <h1>A specific need details:</h1>
+        <h3>{{ (singleNeed | async)?.item }}</h3>
+        <p>{{ (singleNeed | async)?.donator }}</p>
       </mat-card>
     </mat-tab>
     <mat-tab label="Available Lists">

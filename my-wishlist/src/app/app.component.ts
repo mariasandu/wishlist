@@ -9,6 +9,10 @@ interface Need {
   donator: string;
 }
 
+interface NeedId extends Need {
+  id: string;
+}
+
 
 @Component({
   selector: 'app-root',
@@ -18,19 +22,41 @@ interface Need {
 export class AppComponent {
 
   needsCol: AngularFirestoreCollection<Need>;
-  needs: Observable<Need[]>;
+  needs: any;
 
   item:string;
   donator:string;
+
+  needDoc: AngularFirestoreDocument<Need>;
+  singleNeed: Observable<Need>;
 
   constructor(private afs: AngularFirestore) {}
 
   ngOnInit() {
     this.needsCol = this.afs.collection('needs');
-    this.needs = this.needsCol.valueChanges();
+    //snapshotChanges is used to retreive the document data and other metadata, which includes the ID
+    //we need ID to show edir or delete a record
+    this.needs = this.needsCol.snapshotChanges()
+    .map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Need;
+        const id = a.payload.doc.id;
+        return { id, data };
+      });
+    });
   }
 
   addNeed() {
-    this.afs.collection('needs').add({'item': this.item});
+    this.afs.collection('needs').add({'item': this.item, 'donator': this.donator});
+  }
+
+  getNeed(needId) {
+    this.needDoc = this.afs.doc('needs/'+needId);
+    this.singleNeed = this.needDoc.valueChanges();
+    console.log("click");
+  }
+
+  deleteNeed(needId) {
+    this.afs.doc('needs/'+needId).delete();
   }
 }
