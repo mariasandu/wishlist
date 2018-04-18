@@ -37,23 +37,25 @@ export class AppComponent {
     //snapshotChanges is used to retreive the document data and other metadata, which includes the ID
     //we need ID to show edir or delete a record
     this.needs = this.needsCol.snapshotChanges()
-    .map(actions => {
-      return actions.map(a => {
-        const data = a.payload.doc.data() as Need;
-        const id = a.payload.doc.id;
-        return { id, data };
+      .map(actions => {
+       return actions.map(a => {
+         const data = a.payload.doc.data() as Need;
+         const id = a.payload.doc.id;
+         return { id, data };
+       });
       });
-    });
   }
 
   addNeed() {
-    this.afs.collection('needs').add({'item': this.item, 'donator': this.donator});
+    this.afs.collection('needs').add({
+      'item': this.item,
+      'donator': this.donator,
+    });
   }
 
   getNeed(needId) {
     this.needDoc = this.afs.doc('needs/'+needId);
     this.singleNeed = this.needDoc.valueChanges();
-    console.log("click");
   }
 
   deleteNeed(needId) {

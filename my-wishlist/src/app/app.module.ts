@@ -5,31 +5,35 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { WishesComponent } from './wishes/wishes.component';
+import { WishComponent } from './wishes/wish/wish.component';
+import { WishListComponent } from './wishes/wish-list/wish-list.component';
+import { PasscodeDialogComponent } from './passcode-dialog/passcode-dialog.component';
+import { MainListComponent } from './main-list/main-list.component';
 
-// Initialize Firebase
-var firebaseConfig = {
-  apiKey: "AIzaSyBRUuuOYHR1U3UWztZvlRSe2vEnLL_GBX4",
-  authDomain: "my-wishlist-datastore.firebaseapp.com",
-  databaseURL: "https://my-wishlist-datastore.firebaseio.com",
-  projectId: "my-wishlist-datastore",
-  storageBucket: "my-wishlist-datastore.appspot.com",
-  messagingSenderId: "799712116794"
-};
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    WishesComponent,
+    WishComponent,
+    WishListComponent,
+    PasscodeDialogComponent,
+    MainListComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     FormsModule
