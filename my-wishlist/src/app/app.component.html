@@ -26,15 +26,33 @@
         <mat-list *ngFor="let need of needs | async">
           <mat-list-item (click)="getNeed(need.id)">
             <h3 mat-line>{{ need.data.item }}</h3>(<a href="#" (click)="deleteNeed(need.id)">delete</a>)
+            <br>
+
           </mat-list-item>
         </mat-list>
         <h1>A specific need details:</h1>
         <h3>{{ (singleNeed | async)?.item }}</h3>
         <p>{{ (singleNeed | async)?.donator }}</p>
+        <input matInput placeholder="Need Detrails" [(ngModel)]="needDetail" name="needDetail">
+        <br>
+        <button type="submit" class="btn btn-primary" (click)="addNeedDetails(selectedItemId)">Add Needs Details</button>
+
       </mat-card>
     </mat-tab>
     <mat-tab label="Available Lists">
       <h3>Available lists</h3>
+      <mat-card>
+        <form class="list-form">
+          <mat-form-field class="field-full-width">
+            <input matInput placeholder="List Name" [(ngModel)]="listname" name="listname">
+          </mat-form-field>
+          <mat-form-field class="field-full-width">
+            <input matInput placeholder="Set Passcode" [(ngModel)]="passcode" name="passcode">
+          </mat-form-field>
+          <br>
+          <button type="submit" class="btn btn-primary" (click)="addList()">Add a New List</button>
+        </form>
+      </mat-card>
     </mat-tab>
   </mat-tab-group>
 </mat-card>

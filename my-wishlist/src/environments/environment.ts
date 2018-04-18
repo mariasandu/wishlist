@@ -7,11 +7,11 @@ export const environment = {
   production: false,
   // Initialize Firebase
   firebaseConfig : {
-    apiKey: "AIzaSyBRUuuOYHR1U3UWztZvlRSe2vEnLL_GBX4",
-    authDomain: "my-wishlist-datastore.firebaseapp.com",
-    databaseURL: "https://my-wishlist-datastore.firebaseio.com",
-    projectId: "my-wishlist-datastore",
-    storageBucket: "my-wishlist-datastore.appspot.com",
-    messagingSenderId: "799712116794"
+    apiKey: 'AIzaSyBRUuuOYHR1U3UWztZvlRSe2vEnLL_GBX4',
+    authDomain: 'my-wishlist-datastore.firebaseapp.com',
+    databaseURL: 'https://my-wishlist-datastore.firebaseio.com',
+    projectId: 'my-wishlist-datastore',
+    storageBucket: 'my-wishlist-datastore.appspot.com',
+    messagingSenderId: '799712116794'
   }
 };
