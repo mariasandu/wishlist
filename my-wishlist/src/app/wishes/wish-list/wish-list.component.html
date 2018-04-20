@@ -8,28 +8,28 @@
     <form [formGroup]="regiForm" (ngSubmit)="onFormSubmit(regiForm.value)">
 
       <mat-form-field class="demo-full-width">
-        <input formControlName="ListName" matInput placeholder="List Name">
+        <input formControlName="listName" matInput placeholder="List Name">
       </mat-form-field>
       <mat-error>
-          <span *ngIf="!regiForm.get('ListName').valid && regiForm.get('ListName').touched">Please enter a Name for your list</span>
+          <span *ngIf="!regiForm.get('listName').valid && regiForm.get('listName').touched">Please enter a Name for your list</span>
       </mat-error>
 
       <mat-form-field class="demo-full-width">
-        <input formControlName="Passcode" matInput placeholder="Passcode">
+        <input formControlName="passcode" matInput placeholder="Passcode">
       </mat-form-field>
 
       <mat-form-field class="demo-full-width">
-        <textarea  formControlName="Description" matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
+        <textarea  formControlName="description" matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
       </mat-form-field>
       <mat-error>
-          <span *ngIf="!regiForm.get('Description').valid && regiForm.get('Description').touched">Please enter a description for your list.</span>
+          <span *ngIf="!regiForm.get('description').valid && regiForm.get('description').touched">Please enter a description for your list.</span>
       </mat-error>
 
       <mat-form-field class="demo-full-width">
-        <input formControlName="Email" matInput placeholder="Email">
+        <input formControlName="email" matInput placeholder="Email">
         <mat-hint>e.g. : demo@demo.com</mat-hint>
         <mat-error>
-            <span *ngIf="!regiForm.get('Email').valid && regiForm.get('Email').touched">Please provide your email.</span>
+            <span *ngIf="!regiForm.get('email').valid && regiForm.get('email').touched">Please provide your email.</span>
         </mat-error>
 
       </mat-form-field>

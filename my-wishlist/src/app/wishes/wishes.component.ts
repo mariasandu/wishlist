@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { WishListComponent } from './wish-list/wish-list.component';
 
 @Component({
   selector: 'app-wishes',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WishesComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
+  }
+
+  showAddOrEditListDialog(): void {
+    const dialogRef = this.dialog.open(WishListComponent, {
+      panelClass: [ 'wd-dialog' ]
+    });
   }
 
 }

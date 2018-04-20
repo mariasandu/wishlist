@@ -1,3 +1,20 @@
-<p>
-  wishes works!
-</p>
+<mat-card>
+    <!-- Title of an Card -->
+    <mat-card-title>
+      Start creating a new list
+    </mat-card-title>
+    <mat-card-content>
+      <button mat-raised-button (click)="showAddOrEditListDialog()">Start creating your list!</button>
+    </mat-card-content>
+</mat-card>
+<mat-card>
+    <!-- Title of an Card -->
+    <mat-card-title>
+      Available lists:
+    </mat-card-title>
+    <mat-card-content>
+      <mat-list>
+        list1
+      </mat-list>
+    </mat-card-content>
+</mat-card>

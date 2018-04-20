@@ -64,6 +64,12 @@ body {
 /*==============================
 =            DIALOG            =
 ==============================*/
+@media screen and (max-width: 960px) {
+  .wd-dialog {
+    max-width: 100% !important;
+    width: 100%;
+  }
+}
 
 /*=====  End of DIALOG  ======*/
 
