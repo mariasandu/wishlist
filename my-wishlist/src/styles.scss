@@ -64,62 +64,51 @@ body {
 /*==============================
 =            DIALOG            =
 ==============================*/
-.wd-dialog {
-  min-width: 50%;
-  margin: 10px;
 
-  .mat-dialog-title {
-    margin-bottom: 0;
-  }
-
-  .mat-form-field {
-    display: block;
-  }
-
-  .mat-input-container.mat-focused {
-    .mat-form-field-label {
-      color: $controlsColor;
-      border-color: $controlsColor;
-    }
-
-    .mat-form-field-ripple {
-      background-color: $controlsColor;
-    }
-  }
-
-  .submit-button {
-    &[disabled] {
-      background-color: rgba(57, 191, 89, 0.5);
-    }
-    background-color: $controlsColor;
-    color: #fff;
-  }
-}
-
-@media screen and (max-width: 960px) {
-  .wd-dialog {
-    max-width: 100% !important;
-    width: 100%;
-  }
-}
 /*=====  End of DIALOG  ======*/
 
 /*==============================
 =            SELECT            =
 ==============================*/
-.wd-select {
-  .mat-option {
-    &.mat-selected:not(.mat-option-disabled) {
-      color: $controlsColor;
-    }
-  }
+
+
+/*=====  End of SELECT  ======*/
+
+.mat-card {
+  text-align: -webkit-center;
 }
 
-.mat-form-field {
-  &.mat-focused {
-    .mat-select-arrow {
-      color: rgba(0, 0, 0, 0.54) !important;
-    }
+.demo-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.demo-full-width {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'AvenirLight', sans-serif;
+}
+
+mat-card {
+  max-width: 80%;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.done {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+}
+
+.content-center {
+  text-align: -webkit-center;
+  .mat-raised-button {
+    color: $m-blue;
   }
 }
-/*=====  End of SELECT  ======*/

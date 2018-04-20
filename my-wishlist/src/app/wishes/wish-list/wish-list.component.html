@@ -1,3 +1,42 @@
-<p>
-  wish-list works!
-</p>
+
+<mat-card>
+  <!-- Title of an Card -->
+  <mat-card-title>
+    Start creating a new list
+  </mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="regiForm" (ngSubmit)="onFormSubmit(regiForm.value)">
+
+      <mat-form-field class="demo-full-width">
+        <input formControlName="ListName" matInput placeholder="List Name">
+      </mat-form-field>
+      <mat-error>
+          <span *ngIf="!regiForm.get('ListName').valid && regiForm.get('ListName').touched">Please enter a Name for your list</span>
+      </mat-error>
+
+      <mat-form-field class="demo-full-width">
+        <input formControlName="Passcode" matInput placeholder="Passcode">
+      </mat-form-field>
+
+      <mat-form-field class="demo-full-width">
+        <textarea  formControlName="Description" matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+      <mat-error>
+          <span *ngIf="!regiForm.get('Description').valid && regiForm.get('Description').touched">Please enter a description for your list.</span>
+      </mat-error>
+
+      <mat-form-field class="demo-full-width">
+        <input formControlName="Email" matInput placeholder="Email">
+        <mat-hint>e.g. : demo@demo.com</mat-hint>
+        <mat-error>
+            <span *ngIf="!regiForm.get('Email').valid && regiForm.get('Email').touched">Please provide your email.</span>
+        </mat-error>
+
+      </mat-form-field>
+
+      <button mat-raised-button [disabled]="!regiForm.valid">Submit</button>
+      <button mat-raised-button>Clear</button>
+
+    </form>
+  </mat-card-content>
+</mat-card>

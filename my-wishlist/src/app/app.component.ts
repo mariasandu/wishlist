@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { FormBuilder, FormGroup, Validators, FormsModule, NgForm } from '@angular/forms';
+
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+
+import { WishListComponent } from './wishes/wish-list/wish-list.component';
 
 interface Need {
   item: string;
@@ -28,7 +32,7 @@ export class AppComponent implements OnInit {
 
   item: string;
   donator: string;
-  needDetail: string; //------
+  needDetail: string; // ------
   listname: string;
   passcode: string;
 
@@ -63,19 +67,6 @@ export class AppComponent implements OnInit {
       });
   }
 
-    /*2.  const collection = this.afStore.collection<any>('collection1');
-    return collection.snapshotChanges()
-      .map(participants => {
-        return participants.map(participant => {
-          const data = participant.payload.doc.data();
-          const id = participant.payload.doc.id;
-          return this.afStore.doc('collection2/' + id).valueChanges()
-            .map(data2 => Object.assign({}, {id, ...data, ...data2}));
-        });
-      }).flatMap(observables => Observable.combineLatest(observables)); */
-
-      //3. this.personBooks = this.afs.collection('person/'+personId+'/Books');
-
   addNeed() {
     this.afs.collection('needs').add({
       'item': this.item,
@@ -98,8 +89,8 @@ export class AppComponent implements OnInit {
 
   addItemList(listId) {
     this.afs.collection('wishlist/' + listId + '/needs').add({
-      'item': "testitem",
-      'donator': "test donator",
+      'item': 'testitem',
+      'donator': 'test donator',
     });
   }
 

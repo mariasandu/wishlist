@@ -40,19 +40,7 @@
       </mat-card>
     </mat-tab>
     <mat-tab label="Available Lists">
-      <h3>Available lists</h3>
-      <mat-card>
-        <form class="list-form">
-          <mat-form-field class="field-full-width">
-            <input matInput placeholder="List Name" [(ngModel)]="listname" name="listname">
-          </mat-form-field>
-          <mat-form-field class="field-full-width">
-            <input matInput placeholder="Set Passcode" [(ngModel)]="passcode" name="passcode">
-          </mat-form-field>
-          <br>
-          <button type="submit" class="btn btn-primary" (click)="addList()">Add a New List</button>
-        </form>
-      </mat-card>
+      <app-wish-list></app-wish-list>
     </mat-tab>
   </mat-tab-group>
 </mat-card>

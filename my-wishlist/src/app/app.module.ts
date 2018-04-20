@@ -9,7 +9,7 @@ import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { WishesComponent } from './wishes/wishes.component';
 import { WishComponent } from './wishes/wish/wish.component';
@@ -36,6 +36,7 @@ import { MainListComponent } from './main-list/main-list.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    ReactiveFormsModule,
     FormsModule
   ],
   providers: [],
