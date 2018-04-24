@@ -26,8 +26,6 @@
         <mat-list *ngFor="let need of needs | async">
           <mat-list-item (click)="getNeed(need.id)">
             <h3 mat-line>{{ need.data.item }}</h3>(<a href="#" (click)="deleteNeed(need.id)">delete</a>)
-            <br>
-
           </mat-list-item>
         </mat-list>
         <h1>A specific need details:</h1>

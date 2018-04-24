@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
 import { FormBuilder, FormGroup, Validators, FormsModule, NgForm } from '@angular/forms';
 import { AngularFirestore } from 'angularfire2/firestore';
 
@@ -15,7 +16,7 @@ export class WishListComponent implements OnInit {
   description = '';
   email = '';
 
-  constructor(private fb: FormBuilder, private afs: AngularFirestore) {
+  constructor(private fb: FormBuilder, private afs: AngularFirestore, public dialogRef: MatDialogRef<WishListComponent>) {
     this.regiForm = fb.group({
       'listName' : [null, Validators.required],
       'passcode' : [null],
@@ -28,7 +29,6 @@ export class WishListComponent implements OnInit {
   }
 
   onFormSubmit(form: NgForm) {
-    console.log(form);
     this.addList(form);
   }
 
@@ -39,6 +39,9 @@ export class WishListComponent implements OnInit {
       'description': formDet.description,
       'email' : formDet.email
     });
+  }
+  close(): void {
+    this.dialogRef.close();
   }
 
 }

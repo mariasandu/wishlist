@@ -34,8 +34,8 @@
 
       </mat-form-field>
 
-      <button mat-raised-button [disabled]="!regiForm.valid">Submit</button>
-      <button mat-raised-button>Clear</button>
+      <button mat-raised-button [disabled]="!regiForm.valid">Next</button>
+      <button mat-raised-button (click)="close()">Cancel</button>
 
     </form>
   </mat-card-content>
