@@ -5,7 +5,7 @@
     Start creating a new list
   </mat-card-title>
   <mat-card-content>
-    <form [formGroup]="regiForm" (ngSubmit)="onFormSubmit(regiForm.value)">
+    <form [formGroup]="regiForm">
 
       <mat-form-field class="demo-full-width">
         <input formControlName="listName" matInput placeholder="List Name">
@@ -31,11 +31,27 @@
         <mat-error>
             <span *ngIf="!regiForm.get('email').valid && regiForm.get('email').touched">Please provide your email.</span>
         </mat-error>
-
       </mat-form-field>
 
-      <button mat-raised-button [disabled]="!regiForm.valid">Next</button>
+      <button mat-raised-button [disabled]="!regiForm.valid" (click)="onCreateList(regiForm.value)">Add Items</button>
       <button mat-raised-button (click)="close()">Cancel</button>
+
+
+      <mat-card *ngIf="displayNeeds">
+       <mat-form-field class="demo-full-width">
+          <input formControlName="need" matInput placeholder="Need" [(ngModel)]="need">
+       </mat-form-field>
+       <mat-error>
+          <span *ngIf="!regiForm.get('need').valid && regiForm.get('need').touched">Please enter at list an item</span>
+       </mat-error>
+       <button mat-raised-button (click)="addNewNeed(regiForm.value)">Add New Need</button>
+       <mat-list *ngFor="let need of needs">
+          <mat-list-item>
+            <h3 mat-line>{{ need.data.item }}</h3>
+          </mat-list-item>
+      </mat-list>
+      <button mat-raised-button [disabled]="!regiForm.valid" (click)="onFormSubmit(regiForm.value)">Close</button>
+     </mat-card>
 
     </form>
   </mat-card-content>

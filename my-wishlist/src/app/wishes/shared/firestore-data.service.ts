@@ -13,7 +13,9 @@ import { Wishlist } from './wishlist.model';
 export class FirestoreDataService {
 
   wishlistCol: AngularFirestoreCollection<any>;
+  needsCol: AngularFirestoreCollection<any>;
   wishlists: any;
+  needs: any;
 
   wishlistDoc: AngularFirestoreDocument<Wishlist>;
   singleWishlist: Observable<Wishlist>;
@@ -30,27 +32,64 @@ export class FirestoreDataService {
          return { id, data };
        });
       });
+
+    this.needsCol = this.afs.collection('wishlist/' + this.selectedWishlistId + '/needs');
+      this.needs = this.needsCol.snapshotChanges()
+      .map(actions => {
+       return actions.map(a => {
+         const data = a.payload.doc.data() as any;
+         const id = a.payload.doc.id;
+         return { id, data };
+       });
+      });
   }
 
   getWishlists() {
     return this.wishlists;
   }
 
-  addWishlist() {
-    this.afs.collection('wishlist').add({
-      'listname': 'testlistname',
-      'passcode': 'testpasscode',
-      'description': 'testdescription',
-      'email': 'testemail'
+  getNeeds(selectedWishlistId) {
+    this.needsCol = this.afs.collection('wishlist').doc(selectedWishlistId).collection('needs');
+      this.needs = this.needsCol.snapshotChanges()
+      .map(actions => {
+       return actions.map(a => {
+         const data = a.payload.doc.data() as any;
+         const id = a.payload.doc.id;
+         return { id, data };
+       });
+      });
+      return this.needs;
+
+  }
+
+  addWishListID(listname, passcode, description, email) {
+    this.afs.collection("wishlist").doc(listname).set({
+      'listname': listname,
+      'passcode': passcode,
+      'description': description,
+      'email': email
+    })
+    .then(function() {
+      console.log("Document successfully written!");
+    })
+    .catch(function(error) {
+      console.error("Error writing document: ", error);
     });
   }
 
-  addNeed(wishlistId) {
-    this.afs.collection('wishlist/' + wishlistId + '/needs').add({
-      'item': 'testitem',
-      'donator': 'test donator',
+  addNeed(wishlistId: string, need, guest) {
+    this.afs.collection('wishlist').doc(wishlistId).collection('needs').doc(need).set({
+      'item': need,
+      'donator': guest
+    })
+    .then(function() {
+      console.log("Need successfully added!");
+    })
+    .catch(function(error) {
+      console.error("Error writing document: ", error);
     });
   }
+
   deleteWishlists(wishlistId) {
     this.afs.doc('wishlist/' + wishlistId).delete();
   }
