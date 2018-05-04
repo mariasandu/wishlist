@@ -14,9 +14,14 @@
     </mat-card-title>
     <mat-card-content>
         <mat-list *ngFor="let wishlist of wishlists">
-            <mat-list-item (click)="editWishlist(wishlist.name)">
-              <h3 mat-line>{{ wishlist.data.listname }}</h3>
-            </mat-list-item>
+            <!-- <mat-list-item (click)="editWishlist(wishlist.name)"> -->
+              <!-- <h3 mat-line>{{ wishlist.data.listname }}</h3>
+            </mat-list-item> -->
+          <mat-list-item>
+            <a [routerLink]="['/wishlist',wishlist.data.listname]">
+              {{ wishlist.data.listname }}
+            </a>
+          </mat-list-item>
         </mat-list>
     </mat-card-content>
 </mat-card>

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { FormBuilder, FormGroup, Validators, FormsModule, NgForm } from '@angular/forms';
 import { FirestoreDataService } from '../shared/firestore-data.service';
 import { Wish } from '../shared/wish.model';
@@ -15,9 +17,10 @@ export class WishListComponent implements OnInit {
   needs: Wish[];
   selectedItemId: string;
   displayNeeds = false;
+  id: any;
 
   regiForm: FormGroup;
-  listName = '';
+  listName = this.id;
   passcode = '';
   description = '';
   email = '';
@@ -25,6 +28,8 @@ export class WishListComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     public _fsd: FirestoreDataService,
+    private _route: ActivatedRoute,
+    private _router: Router,
     public dialogRef: MatDialogRef<WishListComponent>)
     {
     this.regiForm = fb.group({
@@ -40,6 +45,8 @@ export class WishListComponent implements OnInit {
     // this._fsd.getNeeds(this.selectedItemId).subscribe(needs => {
     // this.needs = needs;
     // });
+    this.id = +this._route.snapshot.paramMap.get('id');
+
   }
 
   onFormSubmit(form: NgForm) {
@@ -69,7 +76,8 @@ export class WishListComponent implements OnInit {
   }
 
   close(): void {
-    this.dialogRef.close();
+    // this.dialogRef.close();
+    this._router.navigate(['/wishlist']);
   }
 
 }

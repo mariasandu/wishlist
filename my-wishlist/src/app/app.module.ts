@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -38,10 +40,23 @@ import { MainListComponent } from './main-list/main-list.component';
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     ReactiveFormsModule,
+    MatDialogModule,
     FormsModule,
-    MatDialogModule
+    RouterModule.forRoot ([
+      // { path: 'wishes', component: WishesComponent },
+      { path: 'home', component: HomeComponent },
+      { path: 'wishlist', component: WishesComponent },
+      { path: 'wishlist/:id', component: WishListComponent },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '**', redirectTo: 'home', pathMatch: 'full' }
+  ])
   ],
-  providers: [],
+  providers: [{
+    provide: MatDialogRef,
+    useValue: {
+      close: (dialogResult: any) => { }
+    }
+  }],
   bootstrap: [AppComponent],
   entryComponents: [
     PasscodeDialogComponent,
